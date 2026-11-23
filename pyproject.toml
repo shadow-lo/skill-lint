@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skill-lint"
+version = "0.1.0"
+description = "Lint Agent Skills (SKILL.md) before you ship them."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+keywords = ["agent-skills", "ai-agents", "lint", "skill", "llm"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Environment :: Console",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+skill-lint = "skill_lint.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skill_lint"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
